@@ -1,0 +1,53 @@
+# .gitignore for express-demo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul/nyc
+coverage/
+.nyc_output/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+
+# Output of 'npm pack'
+*.tgz
+
+# Optional REPL history
+.node_repl_history
+
+# Build output
+build/
+dist/
+
+# IDE/editor folders
+.vscode/
+.idea/
+.DS_Store
+
+# Bower dependency directory
+bower_components/
+
+# Typescript
+typings/
+*.tsbuildinfo

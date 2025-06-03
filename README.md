@@ -37,7 +37,7 @@ ci-cd-docs-template/
 │   └── swagger.config.js      # Swagger config example
 │
 └── examples/                  # Implementation examples
-    ├── express/               # Example for Express
+    ├── express-demo/          # Example for Express (with unit tests)
     ├── fastify/               # Example for Fastify
     └── nest/                  # Example for NestJS
 ```
@@ -84,7 +84,7 @@ To add automated documentation to an Express project:
    app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs))
    ```
 
-4. Document your routes using JSDoc comments (see examples).
+4. Document your routes using JSDoc comments (see examples in `examples/express-demo/routes/hello.js`).
 
 ---
 
@@ -101,7 +101,7 @@ To add automated documentation to an Express project:
      "test": "jest"
    }
    ```
-4. Create your tests in a `tests/` folder (see examples).
+4. Create your tests in a `tests/` folder (see `examples/express-demo/tests/hello.test.js`).
 
 ---
 
@@ -116,6 +116,8 @@ To add automated documentation to an Express project:
 ## 📋 Examples
 
 See the `examples/` folder for full implementations with different frameworks.
+
+- `express-demo/` includes a working Express app with Swagger documentation and unit tests.
 
 ---
 
