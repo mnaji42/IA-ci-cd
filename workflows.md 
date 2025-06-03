@@ -1,0 +1,23 @@
+# GitHub Actions Workflows Templates
+
+This repository includes ready-to-use GitHub Actions workflows in `.github/workflows/`:
+
+## test.yml
+Runs unit tests automatically on every push and pull request.  
+You can modify the trigger (e.g., only on main, only on PR, or on specific branches) by editing the `on:` section.
+
+## lint.yml
+Runs ESLint to check code quality and style on every push and pull request.  
+Feel free to adjust the Node version, the lint command, or the trigger as needed.
+
+## docs.yml
+Generates the OpenAPI/Swagger documentation and uploads it as an artifact.  
+You can adapt the doc generation command or choose to deploy the docs (e.g., to GitHub Pages) if needed.
+
+### How to use/adapt these workflows:
+- Copy the `.github/workflows/` folder into your project.
+- By default, workflows run on every push and pull request to any branch.
+- To change when they run, edit the `on:` section in each `.yml` file.
+- You can add, remove, or rename workflow files to fit your project's needs.
+
+> These workflow files are templates. Adapt them to your project's stack, branching strategy, and automation needs.

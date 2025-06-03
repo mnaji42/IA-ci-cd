@@ -1,6 +1,6 @@
 # CI/CD & Documentation Automation Template
 
-Reusable template for automating documentation, unit tests, and CI/CD pipelines for any backend project (Node.js, Express, Rust, etc.).
+Reusable template for automating documentation, unit tests, and CI/CD pipelines for any backend project (Node.js, Express, Rust, Python, etc.).
 
 ---
 
@@ -13,7 +13,7 @@ This repository provides ready-to-use configurations for:
 - Automated unit testing
 - Code quality and linting standards
 
-**No framework dependency required** — this template is framework-agnostic and can be plugged into any backend project.
+**No framework or language dependency required** — this template is stack-agnostic and can be plugged into any project.
 
 ---
 
@@ -24,17 +24,16 @@ ci-cd-docs-template/
 ├── .github/workflows/         # GitHub Actions configurations
 │   ├── test.yml               # Automated testing pipeline
 │   ├── docs.yml               # Documentation generation pipeline
-│   └── lint.yml     # Code quality checks pipeline
+│   └── lint.yml               # Code quality checks pipeline (example: ESLint)
 │
 ├── docs/templates/            # Documentation templates
 │   ├── openapi-template.yaml  # OpenAPI/Swagger template
 │   ├── rapidoc-template.html  # RapiDoc HTML template
 │   └── readme-template.md     # README template
 │
-├── config/                    # Reusable configuration files
-│   ├── jest.config.js         # Jest config for unit tests
-│   ├── eslint.config.js       # ESLint config for code linting
-│   └── swagger.config.js      # Swagger config example
+├── config/                    # Reusable configuration files (examples)
+│   ├── jest.config.js         # Jest config for unit tests (JavaScript example)
+│   └── swagger.config.js      # Swagger config example (JavaScript example)
 │
 └── examples/                  # Implementation examples
     ├── express-demo/          # Example for Express (with unit tests)
@@ -50,14 +49,14 @@ ci-cd-docs-template/
 
 1. Clone or download this repository.
 2. Copy the `.github/workflows/`, `config/`, and optionally `docs/templates/` folders into your new project.
-3. Adapt the configurations as needed (e.g., update project name, adjust test scripts).
+3. Adapt the configurations as needed (update project name, adjust test/lint scripts, etc.).
 4. Use the provided examples to see how to integrate documentation and testing.
 
 ### For an Existing Project
 
 1. Copy the `.github/workflows/` and `config/` folders into your project.
-2. Integrate the configs into your existing structure (e.g., merge or replace config files).
-3. Adjust workflow YAML files as needed (e.g., if your test script isn't `npm test`, update the workflow accordingly).
+2. Integrate the configs into your existing structure (merge or replace config files as needed).
+3. Adjust workflow YAML files to match your stack (e.g., update test or lint commands).
 4. Use the OpenAPI template in `docs/templates/openapi-template.yaml` to start your API documentation.
 
 ---
@@ -66,7 +65,7 @@ ci-cd-docs-template/
 
 ### Swagger/OpenAPI
 
-To add automated documentation to an Express project:
+To add automated documentation to a JavaScript/Express project:
 
 1. Install dependencies:
 
@@ -90,30 +89,48 @@ To add automated documentation to an Express project:
 
 5. You can start your API documentation from the template in `docs/templates/openapi-template.yaml`.
 
+For other languages/stacks, use the relevant tools and adapt the workflow accordingly.
+
 ---
 
 ## 🧪 Automated Unit Testing
 
-1. Copy `config/jest.config.js` into your project.
-2. Install Jest and dependencies:
-   ```
-   npm install jest supertest --save-dev
-   ```
-3. Add this script to your `package.json`:
-   ```
-   "scripts": {
-     "test": "jest"
-   }
-   ```
-4. Create your tests in a `tests/` folder (see `examples/express-demo/tests/hello.test.js`).
+The provided example uses Jest for JavaScript projects.  
+**For other languages or frameworks, replace with your preferred test runner and configuration.**
+
+1. Copy or create your test config (e.g., `jest.config.js` for JS, or the equivalent for your stack).
+2. Install test dependencies (e.g., `npm install jest supertest --save-dev` for JS).
+3. Update the `test` script in your `package.json` or equivalent.
+4. Create your tests in a `tests/` folder.
 
 ---
 
 ## 🔄 CI/CD with GitHub Actions
 
 1. Copy the `.github/workflows/` folder into your project.
-2. Adjust the YAML files as needed (e.g., change the test script or add steps for linting or docs generation).
+2. Adjust the YAML files as needed:
+   - **test.yml**: Update the test command to fit your stack (e.g., `pytest` for Python, `cargo test` for Rust, etc.).
+   - **lint.yml**: By default, runs ESLint for JS/TS.
+     - If you use another linter (e.g., `flake8` for Python, `clippy` for Rust), update the command accordingly.
+     - If you don't want linting, you can remove or ignore this workflow.
+   - **docs.yml**: Update the doc generation command to fit your stack/tooling.
 3. Commit and push — workflows will run automatically on GitHub.
+
+For advanced usage and customization of workflows, see [workflows.md](workflows.md).
+
+---
+
+## 🧹 Linting & Code Quality
+
+This template does **not** provide a default linter configuration, because linting rules and tools depend on your language and stack.
+
+**How to use linting in your project:**
+
+- For JavaScript/TypeScript, install [ESLint](https://eslint.org/) and create your own config (`npx eslint --init`).
+- For Python, use [flake8](https://flake8.pycqa.org/).
+- For Rust, use [clippy](https://doc.rust-lang.org/clippy/).
+- For any other language, use the recommended linter for your stack.
+- Update the `lint.yml` workflow to run your chosen linter, or remove it if you don't need linting in your project.
 
 ---
 
