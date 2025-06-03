@@ -1,6 +1,14 @@
 # CI/CD & Documentation Automation Template
 
-Reusable template for automating documentation, unit tests, and CI/CD pipelines for any backend project (Node.js, Express, Rust, Python, etc.).
+Reusable template for automating documentation, unit tests, and CI/CD pipelines for any backend project (Node.js/Express example provided, but easily adaptable to Rust, Python, Go, etc.).
+
+---
+
+## ⚠️ Important
+
+> **All configuration files and workflows in this template are provided as examples for a Node.js/Express stack.  
+> If you use another stack or language, you should adapt, replace, or remove these files as needed.  
+> The automation principles and folder structure remain the same.**
 
 ---
 
@@ -22,8 +30,8 @@ This repository provides ready-to-use configurations for:
 ```
 ci-cd-docs-template/
 ├── .github/workflows/         # GitHub Actions configurations
-│   ├── test.yml               # Automated testing pipeline
-│   ├── docs.yml               # Documentation generation pipeline
+│   ├── test.yml               # Automated testing pipeline (Node.js example)
+│   ├── docs.yml               # Documentation generation pipeline (Node.js example)
 │   └── lint.yml               # Code quality checks pipeline (example: ESLint)
 │
 ├── docs/templates/            # Documentation templates
@@ -63,31 +71,15 @@ ci-cd-docs-template/
 
 ## 📚 Automated Documentation
 
-### Swagger/OpenAPI
+> **This is an example for Node.js/Express. For other stacks, adapt to your doc generator.**
 
-To add automated documentation to a JavaScript/Express project:
+To set up automated documentation for your project:
 
-1. Install dependencies:
-
-   ```
-   npm install swagger-ui-express swagger-jsdoc --save-dev
-   ```
-
-2. Copy `config/swagger.config.js` into your project.
-
-3. Integrate Swagger into your Express app:
-
-   ```js
-   const swaggerUi = require("swagger-ui-express")
-   const swaggerConfig = require("./config/swagger.config")
-   const specs = swaggerJSDoc(swaggerConfig)
-
-   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs))
-   ```
-
-4. Document your routes using JSDoc comments (see examples in `examples/express-demo/routes/hello.js`).
-
-5. You can start your API documentation from the template in `docs/templates/openapi-template.yaml`.
+1. **Create a documentation config file** (e.g., for Node.js/Express: `swagger.config.js`).
+2. **Install the appropriate dependencies for your stack** (e.g., `swagger-ui-express` for Node.js, or the relevant doc generator for your language).
+3. **Integrate the documentation middleware or tool into your application**.
+4. **Document your endpoints or code according to your stack's best practices**.
+5. **Adapt the `docs.yml` workflow to run your documentation generation command**.
 
 For other languages/stacks, use the relevant tools and adapt the workflow accordingly.
 
@@ -95,17 +87,21 @@ For other languages/stacks, use the relevant tools and adapt the workflow accord
 
 ## 🧪 Automated Unit Testing
 
-The provided example uses Jest for JavaScript projects.  
-**For other languages or frameworks, replace with your preferred test runner and configuration.**
+> **This is an example for Node.js/Express. For other stacks, adapt to your test runner.**
 
-1. Copy or create your test config (e.g., `jest.config.js` for JS, or the equivalent for your stack).
-2. Install test dependencies (e.g., `npm install jest supertest --save-dev` for JS).
-3. Update the `test` script in your `package.json` or equivalent.
-4. Create your tests in a `tests/` folder.
+To set up automated unit testing for your project:
+
+1. **Create a test config file** (e.g., `jest.config.js` for JS, or the equivalent for your stack).
+2. **Install the appropriate test dependencies** (e.g., `jest`, `supertest` for JS, or your stack's test runner).
+3. **Add a test script to your package.json or project config**.
+4. **Create your tests in a `tests/` folder**.
+5. **Adapt the `test.yml` workflow to run your test command**.
 
 ---
 
 ## 🔄 CI/CD with GitHub Actions
+
+> **This is an example for Node.js/Express. For other stacks, adapt the workflow commands.**
 
 1. Copy the `.github/workflows/` folder into your project.
 2. Adjust the YAML files as needed:
@@ -122,15 +118,15 @@ For advanced usage and customization of workflows, see [workflows.md](workflows.
 
 ## 🧹 Linting & Code Quality
 
-This template does **not** provide a default linter configuration, because linting rules and tools depend on your language and stack.
+> **This is an example for Node.js/Express. For other stacks, adapt to your linter.**
 
-**How to use linting in your project:**
+To set up linting for your project:
 
-- For JavaScript/TypeScript, install [ESLint](https://eslint.org/) and create your own config (`npx eslint --init`).
-- For Python, use [flake8](https://flake8.pycqa.org/).
-- For Rust, use [clippy](https://doc.rust-lang.org/clippy/).
-- For any other language, use the recommended linter for your stack.
-- Update the `lint.yml` workflow to run your chosen linter, or remove it if you don't need linting in your project.
+1. **Create a linter config file** (e.g., `eslint.config.js` for JS, or the equivalent for your stack).
+2. **Install the appropriate linter dependencies** (e.g., `eslint` for JS, `flake8` for Python, `clippy` for Rust).
+3. **Add a lint script to your package.json or project config**.
+4. **Adapt the `lint.yml` workflow to run your lint command**.
+5. **If you don't want linting, you can remove or ignore this workflow.**
 
 ---
 
