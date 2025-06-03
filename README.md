@@ -23,8 +23,8 @@ This repository provides ready-to-use configurations for:
 ci-cd-docs-template/
 ├── .github/workflows/         # GitHub Actions configurations
 │   ├── test.yml               # Automated testing pipeline
-│   ├── docs-generation.yml    # Documentation generation pipeline
-│   └── quality-checks.yml     # Code quality checks pipeline
+│   ├── docs.yml               # Documentation generation pipeline
+│   └── lint.yml     # Code quality checks pipeline
 │
 ├── docs/templates/            # Documentation templates
 │   ├── openapi-template.yaml  # OpenAPI/Swagger template
